@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/authIndex.css" />
+  </head>
+  <body>
+    <div class="main_page">
+      <nav class="nav-container">
+        <div class="logo">
+          <img src="/images/passportJs.png" alt="Logo" />
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+          <li><a href="/home">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Documentation</a></li>
+          <% if (locals.user) { %>
+          <div class="profileSection">
+            <img
+              src="<%= locals.user.profilePicture %>"
+              alt="Profile"
+              id="profile-icon"
+              class="profile-icon"
+            />
+            <li><a href="#"><%= user.name %></a></li>
+            <button class="logout" id="profileSection" type="submit">
+              logout
+            </button>
+          </div>
+          <% }%>
+        </ul>
+      </nav>
+      <div class="bodyContainer">
+        <div class="bodyheader">
+          <h1>Welcome to My Website</h1>
+          <h3>Exploring Passport.js Authentication</h3>
+        </div>
+        <div class="information">
+          <p>
+            This project demonstrates how to implement real-time authentication
+            using
+            <strong>Passport.js</strong>, a powerful middleware for Node.js. It
+            integrates third-party authentication providers such as
+            <em>Google</em>, <em>GitHub</em>, and more, making it easy to secure
+            your application.
+          </p>
+          <p>
+            Learning and applying these techniques has been an exciting journey.
+            By working on this project, I've gained valuable insights into
+            modern authentication processes and how they are used to enhance
+            security in web applications.
+          </p>
+        </div>
+      </div>
+      <% if (locals.sms) { %>
+      <div class="alert-sms" id="alert-sms"><%=locals.sms %></div>
+      <% } %>
+    </div>
+    <% if (locals.user) { %>
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <img
+          src="<%= user.profilePicture %>"
+          alt="Profile"
+          class="popup-profile-pic"
+        />
+        <h3 class="popup-name"><%= user.name %></h3>
+        <form action="/user/logout" method="post">
+          <button class="popup-logout" type="submit">Logout</button>
+        </form>
+      </div>
+    </div>
+    <% } %>
+    <script src="/js/authIndex.js"></script>
+  </body>
+</html>

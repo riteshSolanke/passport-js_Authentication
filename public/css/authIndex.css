@@ -1,0 +1,183 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  margin: 0 15px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-list a:hover {
+  color: #00bcd4;
+}
+
+/* Hamburger menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  background-color: white;
+  height: 3px;
+  width: 25px;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.bodyContainer {
+  width: 80%;
+  margin: 20px auto;
+}
+.bodyContainer h1 {
+  text-align: center;
+}
+.bodyContainer h3 {
+  text-align: center;
+}
+.bodyContainer p {
+  text-align: justify;
+}
+
+.profileSection {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+.profileSection img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.alert-sms {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: fixed;
+  bottom: 10px;
+  transform: translateX(-50%);
+  background-color: #bcf488;
+  color: #721c24;
+  padding: 10px 20px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  z-index: 1000;
+}
+.alert-sms.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Pop-Up Modal */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.popup-content img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.popup-name {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.popup-logout {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-logout:hover {
+  background: #d32f2f;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.logout i {
+  color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .nav-list a {
+    font-size: 20px;
+  }
+}
