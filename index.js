@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const MongoStore = require("connect-mongo");
 const PORT = process.env.PORT || 9000;
 
 // express-session config
@@ -10,9 +11,13 @@ app.use(
   expressSession({
     secret: process.env.SESSION_SECRET || "default_fallback_secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      ttl: 14 * 24 * 60 * 60, // Session expiration in seconds (14 days)
+    }),
     cookie: {
-      maxAge: 3600000,
+      maxAge: 1000 * 60 * 60 * 24 * 14,
       secure: false,
       httpOnly: true,
     },
