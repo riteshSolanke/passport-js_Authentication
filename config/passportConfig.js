@@ -10,7 +10,6 @@ passport.use(
   new LocalStrategy(
     { usernameField: "email", passwordField: "password" },
     async function verify(email, password, cb) {
-     
       const user = await User.findOne({ email: email });
 
       if (!user) {
@@ -39,7 +38,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:9000/user/auth/google/callback",
+      callbackURL:
+        "https://passport-js-authentication.onrender.com/user/auth/google/callback",
       scope: ["profile", "email"],
     },
     async function (accessToken, refreshToken, profile, done) {
@@ -74,7 +74,8 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:9000/user/auth/github/callback",
+      callbackURL:
+        "https://passport-js-authentication.onrender.com/user/auth/github/callback",
     },
     async function (accessToken, refreshToken, profile, done) {
       console.log(profile);
